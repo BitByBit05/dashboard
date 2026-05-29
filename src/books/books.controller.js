@@ -1,4 +1,4 @@
-import { getAllBooks, getBookById, createBook, updateBook, deleteBook } from "./booksModel.js";
+import { getAllBooks, getBookById, createBook, updateBook, deleteBook } from "./books.model.js";
 
 // GET /books  — list all (with optional ?search=)
 async function index(req, res, next) {

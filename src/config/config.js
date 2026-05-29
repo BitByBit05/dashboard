@@ -8,6 +8,7 @@ const _conf = {
   psqlUser: process.env.PSQL_USER,
   psqlDatabase: process.env.PSQL_DATABASE,
   psqlPassword: process.env.PSQL_PASSWORD,
+  jwtSecret: process.env.JWT_SECRET,
 };
 
 export const conf = Object.freeze(_conf);

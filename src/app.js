@@ -1,8 +1,8 @@
 import express from "express";
 import path from "path";
 import { fileURLToPath } from "url";
-import router from "./books/booksRouter.js";
-import userRouter from "./user/userRouter.js";
+import router from "./books/books.router.js";
+import userRouter from "./user/user.router.js";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -18,10 +18,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "../public")));
 
 // ── Routes ────────────────────────────────────────────────────────────────────
-app.use("/api/books", router);
+app.use("/books", router);
 
 // Root redirect
-app.use("/api/users", userRouter);
+app.use("/users", userRouter);
 
 // Fix 404 Handler
 app.use((req, res) => {

@@ -1,131 +1,204 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title><%= title %> | BookShelf</title>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %> | BookShelf</title>
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
 
-    :root {
-      --bg:      #0f0f13;
-      --surface: #18181f;
-      --border:  #2a2a35;
-      --accent:  #7c6af7;
-      --accent2: #f76a8a;
-      --text:    #e8e8f0;
-      --muted:   #6b6b80;
-      --radius:  10px;
-    }
+      :root {
+        --bg: #f4f4f4;
+        --surface: #ffffff;
+        --border: #c8c8c8;
+        --accent: #2f5d9f;
+        --accent2: #b53a3a;
+        --text: #222222;
+        --muted: #666666;
+        --radius: 4px;
+      }
 
-    body {
-      font-family: 'Georgia', serif;
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-    }
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        min-height: 100vh;
+        margin: 0;
+      }
 
-    nav {
-      background: var(--surface);
-      border-bottom: 1px solid var(--border);
-      padding: 1rem 2rem;
-      display: flex;
-      align-items: center;
-      gap: 2rem;
-    }
+      main {
+        max-width: 1200px;
+        margin: 2rem auto;
+        padding: 0 2rem;
+      }
 
-    nav .brand {
-      font-size: 1.4rem;
-      font-weight: bold;
-      color: var(--accent);
-      text-decoration: none;
-      letter-spacing: -0.5px;
-    }
+      nav {
+        background: #e8e8e8;
+        border-bottom: 1px solid var(--border);
+        padding: 1rem 2rem;
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+      }
 
-    nav a {
-      color: var(--muted);
-      text-decoration: none;
-      font-family: 'Courier New', monospace;
-      font-size: 0.85rem;
-      transition: color 0.2s;
-    }
+      nav .brand {
+        font-size: 1.1rem;
+        font-weight: bold;
+        color: var(--accent);
+        text-decoration: none;
+      }
 
-    nav a:hover { color: var(--text); }
+      nav a {
+        color: var(--text);
+        text-decoration: none;
+        font-size: 0.9rem;
+      }
 
-    main { max-width: 1100px; margin: 0 auto; padding: 2.5rem 1.5rem; }
+      nav a:hover {
+        text-decoration: underline;
+      }
 
-    /* ── Buttons ── */
-    .btn {
-      display: inline-block;
-      padding: 0.5rem 1.2rem;
-      border-radius: var(--radius);
-      border: none;
-      cursor: pointer;
-      font-family: 'Courier New', monospace;
-      font-size: 0.85rem;
-      text-decoration: none;
-      transition: opacity 0.2s, transform 0.15s;
-    }
-    .btn:hover { opacity: 0.85; transform: translateY(-1px); }
-    .btn-primary   { background: var(--accent);  color: #fff; }
-    .btn-secondary { background: var(--surface); color: var(--text); border: 1px solid var(--border); }
-    .btn-danger    { background: var(--accent2); color: #fff; }
+      /* ── Buttons ── */
+      .btn {
+        display: inline-block;
+        padding: 0.45rem 1rem;
+        border-radius: var(--radius);
+        border: 1px solid var(--border);
+        cursor: pointer;
+        font-size: 0.9rem;
+        text-decoration: none;
+        background: #f8f8f8;
+      }
 
-    /* ── Cards ── */
-    .card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 1.5rem;
-      transition: border-color 0.2s, transform 0.2s;
-    }
-    .card:hover { border-color: var(--accent); transform: translateY(-2px); }
+      .btn:hover {
+        background: #efefef;
+      }
 
-    /* ── Forms ── */
-    .form-group { margin-bottom: 1.2rem; }
-    label { display: block; margin-bottom: 0.4rem; color: var(--muted); font-size: 0.8rem; font-family: 'Courier New', monospace; text-transform: uppercase; letter-spacing: 1px; }
-    input, select, textarea {
-      width: 100%;
-      padding: 0.65rem 0.9rem;
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      color: var(--text);
-      font-size: 1rem;
-      font-family: inherit;
-      transition: border-color 0.2s;
-    }
-    input:focus, select:focus, textarea:focus {
-      outline: none;
-      border-color: var(--accent);
-    }
+      .btn-primary {
+        background: var(--accent);
+        border-color: var(--accent);
+        color: #fff;
+      }
 
-    /* ── Search bar ── */
-    .search-bar { display: flex; gap: 0.6rem; margin-bottom: 2rem; }
-    .search-bar input { flex: 1; }
+      .btn-primary:hover {
+        background: #284f88;
+      }
 
-    /* ── Page heading ── */
-    h1 { font-size: 2rem; margin-bottom: 1.5rem; letter-spacing: -1px; }
-    h2 { font-size: 1.4rem; margin-bottom: 0.8rem; }
+      .btn-secondary {
+        background: #f8f8f8;
+        color: var(--text);
+      }
 
-    .badge {
-      display: inline-block;
-      padding: 0.2rem 0.7rem;
-      background: var(--accent);
-      color: #fff;
-      border-radius: 99px;
-      font-size: 0.75rem;
-      font-family: 'Courier New', monospace;
-    }
+      .btn-danger {
+        background: var(--accent2);
+        border-color: var(--accent2);
+        color: #fff;
+      }
 
-    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.2rem; }
-    .empty { color: var(--muted); text-align: center; padding: 3rem 0; font-style: italic; }
-  </style>
-</head>
-<body>
-  <nav>
-    <a href="/books" class="brand">📚 BookShelf</a>
-    <a href="/books">All Books</a>
-    <a href="/books/new">+ Add Book</a>
-  </nav>
-  <main>
+      .btn-danger:hover {
+        background: #9e3131;
+      }
+
+      /* ── Cards ── */
+      .card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 1.5rem;
+      }
+
+      /* ── Forms ── */
+      .form-group {
+        margin-bottom: 1rem;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 0.3rem;
+        color: var(--text);
+        font-size: 0.85rem;
+        font-weight: bold;
+      }
+
+      input,
+      select,
+      textarea {
+        width: 100%;
+        padding: 0.55rem 0.7rem;
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        color: var(--text);
+        font-size: 0.95rem;
+        font-family: inherit;
+      }
+
+      input:focus,
+      select:focus,
+      textarea:focus {
+        outline: none;
+        border-color: var(--accent);
+      }
+
+      /* ── Search bar ── */
+      .search-bar {
+        display: flex;
+        gap: 0.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .search-bar input {
+        flex: 1;
+      }
+
+      /* ── Page heading ── */
+      h1 {
+        font-size: 1.8rem;
+        margin-bottom: 1.2rem;
+        font-weight: bold;
+      }
+
+      h2 {
+        font-size: 1.25rem;
+        margin-bottom: 0.7rem;
+      }
+
+      .badge {
+        display: inline-block;
+        padding: 0.15rem 0.55rem;
+        background: #e2eaf7;
+        border: 1px solid #b8c7e3;
+        color: var(--accent);
+        border-radius: var(--radius);
+        font-size: 0.75rem;
+        font-weight: bold;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 1rem;
+      }
+
+      .empty {
+        color: var(--muted);
+        text-align: center;
+        padding: 2rem 0;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <a href="/books" class="brand">📚 BookShelf</a>
+      <a href="/books">All Books</a>
+      <a href="/books/new">+ Add Book</a>
+    </nav>
+    <main></main>
+  </body>
+</html>

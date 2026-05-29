@@ -4,7 +4,7 @@ const pool = new Pool({
   host: process.env.DB_HOST || "localhost",
   port: process.env.DB_PORT || 5432,
   database: process.env.DB_NAME || "elib",
-  user: process.env.DB_USER || "localhost",
+  user: process.env.DB_USER || "postgres",
   password: process.env.DB_PASSWORD || "root",
   // Keep a pool of up to 10 clients; idle ones are released after 30 s
   max: 10,
