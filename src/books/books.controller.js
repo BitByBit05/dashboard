@@ -35,7 +35,7 @@ function newForm(req, res) {
 // POST /books  — create book
 async function create(req, res, next) {
   try {
-    await createBook(req.body);
+    await createBook(req.body, req.user);
     res.redirect("/books");
   } catch (err) {
     next(err);

@@ -37,12 +37,12 @@ export async function getBookById(id) {
  * @param {{ title: string, author: string, genre: string, published_year: number }} data
  * @returns {Promise<Object>} The newly created row
  */
-export async function createBook({ title, author, genre, published_year }) {
+export async function createBook({ title, author, genre, published_year }, { sub: created_by }) {
   const { rows } = await pool.query(
-    `INSERT INTO books (title, author, genre, published_year)
-     VALUES ($1, $2, $3, $4)
+    `INSERT INTO books (title, author, genre, published_year, created_by)
+     VALUES ($1, $2, $3, $4, $5)
      RETURNING *`,
-    [title, author, genre, published_year],
+    [title, author, genre, published_year, created_by],
   );
   return rows[0];
 }
