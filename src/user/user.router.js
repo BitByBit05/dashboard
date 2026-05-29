@@ -9,7 +9,10 @@ userRouter.get("/", (req, res) => {
   });
 });
 
+userRouter.get("/register", ctrl.registerForm);
 userRouter.post("/register", ctrl.registerUser);
+userRouter.get("/login", ctrl.loginForm);
 userRouter.post("/login", ctrl.loginUser);
+userRouter.get("/logout", ctrl.logoutUser);
 
 export default userRouter;

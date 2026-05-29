@@ -21,3 +21,9 @@ export async function getPassword(email) {
   const { rows } = await pool.query(query, [email]);
   return rows[0].password;
 }
+
+export async function getUserByEmail(email) {
+  const query = `SELECT * FROM users WHERE email = $1`;
+  const { rows } = await pool.query(query, [email]);
+  return rows[0] || null;
+}
